@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
 import Image from 'next/image'
 import styles from './page.module.css'
 
 export default function Home() {
+  const [projects, setProjects] = useState([]);
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -90,6 +92,13 @@ export default function Home() {
           </p>
         </a>
       </div>
+    {projects.map(project => {
+      return (
+      <div key={project.id}>
+        
+      </div>
+      );
+    })}
     </main>
   )
 }
