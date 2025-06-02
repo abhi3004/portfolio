@@ -104,6 +104,12 @@ a {
   text-decoration: none;
 }
 
+.bg-graph {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none' stroke='%23333' stroke-width='0.5'><path d='M 40 0 L 0 0 0 40'/></svg>");
+  background-size: 50px 50px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
