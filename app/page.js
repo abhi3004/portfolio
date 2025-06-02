@@ -1,73 +1,33 @@
-import React from 'react';
-import Image from 'next/image'
-import styles from './page.module.css'
+import React from "react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main className="min-h-screen bg-gray-900 text-gray-100 p-8">
+      <section className="max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl font-bold mb-4">Abhijeet Pareek</h1>
+        <p className="text-lg mb-8">
+          Frontend Developer & Machine Learning Enthusiast. I build responsive UI and integrate smart ML experiences.
+        </p>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          <Link
+            href="/projects/frontend"
+            className="block p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <h2 className="text-2xl font-semibold mb-2">Frontend Projects</h2>
+            <p>React, Next.js, MUI, Tailwind UI projects I have built or contributed to.</p>
+          </Link>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-      </main>
-  )
+          <Link
+            href="/projects/ml"
+            className="block p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <h2 className="text-2xl font-semibold mb-2">Machine Learning Projects</h2>
+            <p>Projects using TensorFlow, PyTorch, NLP APIs, and data visualization.</p>
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
 }
