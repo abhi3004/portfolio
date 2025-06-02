@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-900 text-gray-100 p-8">
-      <section className="max-w-4xl mx-auto text-center">
+    <main className="min-h-screen bg-zinc-800 text-gray-100 p-8 bg-graph">
+<section className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl font-bold mb-4">Abhijeet Pareek</h1>
         <p className="text-lg mb-8">
           Frontend Developer & Machine Learning Enthusiast. I build responsive UI and integrate smart ML experiences.
