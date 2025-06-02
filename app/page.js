@@ -16,7 +16,7 @@ export default function Home() {
             className="block p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow hover:shadow-lg transition"
           >
             <h2 className="text-2xl font-semibold mb-2">Frontend Projects</h2>
-            <p>React, Next.js, MUI, Tailwind UI projects I've built or contributed to.</p>
+            <p>React, Next.js, MUI, Tailwind UI projects I have built or contributed to.</p>
           </Link>
 
           <Link
