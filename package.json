@@ -9,11 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.15.16",
+    "@react-three/postprocessing": "^2.15.13",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.6",
+    "framer-motion": "^11.0.5",
+    "gsap": "^3.12.5",
     "next": "13.4.6",
+    "postprocessing": "^6.34.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-use-measure": "^2.1.1",
+    "three": "^0.161.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
