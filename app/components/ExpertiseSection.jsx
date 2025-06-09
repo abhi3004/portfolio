@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 const expertise = [
   {
@@ -55,9 +56,21 @@ const expertise = [
 ];
 
 export default function ExpertiseSection() {
+  const [showButton, setShowButton] = useState(false);
+  const scrollToWork = () => {
+    const workSection = document.getElementById('work');
+    workSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
-    <section id="expertise" className="max-w-6xl mx-auto mb-16 px-2 md:min-h-screen md:flex md:flex-col md:justify-center">
-      <h2 className="text-5xl font-extrabold text-center mb-12">My Expertise</h2>
+    <section id="expertise" className="p-20 max-w-6xl mx-auto px-2 md:min-h-screen md:flex md:flex-col md:justify-center">
+      <h2 className="mt-auto text-5xl font-extrabold text-center mb-12">My Expertise</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
         {expertise.map((item, idx) => (
           <div
@@ -94,6 +107,28 @@ export default function ExpertiseSection() {
             {item.desc}
           </div>
         ))}
+      </div>
+      <div className="justify-center flex mt-auto mb-8">
+        <button
+          onClick={() => scrollToWork()}
+          className={`p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group animate-hue-rotate ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          aria-label="Scroll to expertise section"
+        >
+          <svg
+            className="w-8 h-8 text-white transform group-hover:translate-y-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </button>
       </div>
     </section>
   );

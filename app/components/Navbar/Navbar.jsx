@@ -8,8 +8,8 @@ const navItems = [
   { name: '// home', path: '#home', number: '01', section: 'home' },
   { name: '// expertise', path: '#expertise', number: '02', section: 'expertise' },
   { name: '// work', path: '#work', number: '03', section: 'work' },
-  { name: '// experience', path: '/experience', number: '04', section: 'experience' },
-  { name: '// contact', path: '/contact', number: '05', section: 'contact' },
+  { name: '// experience', path: '#experience', number: '04', section: 'experience' },
+  { name: '// contact', path: '#contact', number: '05', section: 'contact' },
 ];
 
 export default function Navbar() {
@@ -65,7 +65,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-white font-bold text-xl">
-              AP
+              AP .&gt;
             </Link>
           </div>
 
@@ -79,7 +79,7 @@ export default function Navbar() {
                   onClick={e => handleNavClick(e, item.path)}
                   className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors group relative ${activeSection === item.section ? 'text-white underline underline-offset-8 decoration-2' : ''}`}
                 >
-                  <span className="absolute -top-2 -right-2 text-[8px] text-gray-400 group-hover:text-gray-300 transition-colors">
+                  <span className={`${activeSection === item.section ? 'text-white' : ""} absolute -top-2 -right-2 text-[8px] text-gray-400 group-hover:text-gray-300 transition-colors`}>
                     {item.number}
                   </span>
                   {item.name}
