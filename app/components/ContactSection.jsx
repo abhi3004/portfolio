@@ -81,7 +81,7 @@ export default function ContactSection() {
         <div className="w-full lg:w-[40%] p-4">
           <h1 className="text-[60px] md:text-[100px] font-extrabold text-left">Contact</h1>
           <p className="text-left font-extrabold text-2xl mb-8">
-            Let's connect and discuss how we can work together.
+            Let&apos;s connect and discuss how we can work together.
           </p>
           
           <div className="space-y-6">
