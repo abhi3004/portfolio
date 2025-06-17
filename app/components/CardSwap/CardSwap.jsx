@@ -12,13 +12,18 @@ import React, {
   import gsap from "gsap";
   
   export const Card = forwardRef(
-    ({ customClass, ...rest }, ref) => (
-      <div
-        ref={ref}
-        {...rest}
-        className={`absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ""} ${rest.className ?? ""}`.trim()}
-      />
-    )
+    ({ customClass, ...rest }, ref) => {
+      useEffect(() => {
+        console.log("Card component mounted");
+      }, []);
+      return (
+        <div
+          ref={ref}
+          {...rest}
+          className={`absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ""} ${rest.className ?? ""}`.trim()}
+        />
+      );
+    }
   );
   Card.displayName = "Card";
   
@@ -59,6 +64,10 @@ import React, {
     easing = "elastic",
     children,
   }) => {
+    useEffect(() => {
+      console.log("CardSwap component mounted");
+    }, []);
+
     const config =
       easing === "elastic"
         ? {
@@ -97,6 +106,7 @@ import React, {
     const container = useRef(null);
   
     useEffect(() => {
+      console.log("CardSwap useEffect running");
       const total = refs.length;
       refs.forEach((r, i) =>
         placeNow(

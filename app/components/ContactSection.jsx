@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const socialLinks = [
   {
@@ -29,8 +30,8 @@ const socialLinks = [
         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
       </svg>
     ),
-    url: "https://github.com/your-username",
-    label: "github.com/your-username"
+    url: "https://github.com/abhi3004",
+    label: "github.com/abhi3004"
   },
   {
     name: "Medium",
@@ -39,8 +40,8 @@ const socialLinks = [
         <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
       </svg>
     ),
-    url: "https://medium.com/@your-username",
-    label: "medium.com/@your-username"
+    url: "https://medium.com/@abhijeet.pareek30",
+    label: "medium.com/@abhijeet.pareek30"
   },
   {
     name: "X (Twitter)",
@@ -49,8 +50,8 @@ const socialLinks = [
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
       </svg>
     ),
-    url: "https://x.com/your-username",
-    label: "x.com/your-username"
+    url: "https://x.com/AbhijeetParee14",
+    label: "x.com/AbhijeetParee14"
   }
 ];
 
@@ -60,11 +61,52 @@ export default function ContactSection() {
     email: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your email sending logic here
-    console.log("Form submitted:", formData);
+    
+    // Email validation regex
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus({ type: 'error', message: 'Please enter a valid email address' });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        to_email: 'pareek.jeet30@gmail.com',
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      setSubmitStatus({ 
+        type: 'success', 
+        message: 'Message sent successfully! I will get back to you soon.' 
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Failed to send message. Please try again later.' 
+      });
+      console.error('Error sending email:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -108,7 +150,17 @@ export default function ContactSection() {
         <div className="bg-neutral-700 h-px w-full my-4 lg:h-auto lg:w-px lg:my-0 lg:mx-4"></div>
 
         {/* Right Side - Contact Form */}
-        <div className="w-full lg:w-[60%] p-4 pt-32">
+        <div className="w-full lg:w-[60%] p-4 pt-32 mt-auto">
+          {submitStatus.message && (
+            <div className={`mb-6 p-4 rounded-lg ${
+              submitStatus.type === 'success' 
+                ? 'bg-green-500/20 text-green-300' 
+                : 'bg-red-500/20 text-red-300'
+            }`}>
+              {submitStatus.message}
+            </div>
+          )}
+          
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -157,9 +209,14 @@ export default function ContactSection() {
             
             <button
               type="submit"
-              className="w-full px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-white/90 transition-colors duration-300"
+              disabled={isSubmitting}
+              className={`w-full px-6 py-3 rounded-lg bg-white text-black font-medium transition-colors duration-300 ${
+                isSubmitting 
+                  ? 'opacity-50 cursor-not-allowed' 
+                  : 'hover:bg-white/90'
+              }`}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>

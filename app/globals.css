@@ -106,7 +106,7 @@ a {
 
 .bg-graph {
   background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none' stroke='%23333' stroke-width='0.5'><path d='M 40 0 L 0 0 0 40'/></svg>");
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none' stroke='%23333' strokeWidth='0.5'><path d='M 40 0 L 0 0 0 40'/></svg>");
   background-size: 50px 50px;
 }
 
@@ -114,4 +114,21 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 60s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
