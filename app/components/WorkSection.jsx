@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import CardSwap, { Card } from "./CardSwap/CardSwap";
 import InfiniteScroll from "./InfiniteScroll/InfiniteScroll";
+import Link from "next/link";
 
 const items = [
   { content: "Text Item 1" },
@@ -53,8 +54,8 @@ export default function WorkSection() {
 
   return (
     <section id="work" className="max-w-6xl mx-auto mt-[125px] mb-20 px-2 md:min-h-[100vh] md:flex md:flex-col md:justify-center pt-32 md:pt-0">
-      <div class="flex flex-col lg:flex-row items-stretch">
-        <div class="w-full lg:w-[60%] p-4">
+      <div className="flex flex-col lg:flex-row items-stretch">
+        <div className="w-full lg:w-[60%] p-4">
           <h1 className="text-[60px] md:text-[150px] font-extrabold text-left">My Work</h1>
           <p className="text-left font-extrabold text-2xl">
             Deployed scalable fintech, event and food delivery web and hybrid mobile apps using React SPA and PWA.
@@ -63,12 +64,12 @@ export default function WorkSection() {
         </div>
 
         <div
-          class="bg-neutral-700
+          className="bg-neutral-700
            h-px w-full my-4
            lg:h-auto lg:w-px lg:my-0 lg:mx-4"
         ></div>
 
-        <div class="w-full lg:w-[40%]">
+        <div className="w-full lg:w-[40%]">
           <div className="h-[80vh] w-[550px] ml-10 overflow-hidden flex flex-col lg:flex-row relative bg-transparent border border-[#392e4e] rounded-[20px] justify-center items-center w-full mt-4 p-4">
             <CardSwap
                 cardDistance={60}
@@ -77,19 +78,19 @@ export default function WorkSection() {
                 pauseOnHover={false}
               >
                 <Card>
-                  <h3><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Heatmap</h3>
+                  <h3><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Heatmap</h3>
                   <div style={{ boxShadow: '0 0 32px 8px #e11d48, 0 0 64px 16px #e11d48aa' }} className="rounded-xl overflow-hidden">
-                    <img src="/images/puppeteer.png" alt="Heatmap" className="w-full h-full object-cover" />
+                    <img src="/images/tensorflow.png" alt="Heatmap" className="w-full h-full object-cover" />
                   </div>
                 </Card>
                 <Card>
-                  <h3><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Whiteboard</h3>
+                  <h3><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Whiteboard</h3>
                   <div style={{ boxShadow: '0 0 32px 8px #2563eb, 0 0 64px 16px #2563ebaa' }} className="rounded-xl overflow-hidden">
                     <img src="/images/whiteboard.png" alt="Whiteboard" className="w-full h-full object-cover" />
                   </div>
                 </Card>
                 <Card>
-                  <h3><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Card 3</h3>
+                  <h3><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Card 3</h3>
                   <div style={{ boxShadow: '0 0 32px 8px #a21caf, 0 0 64px 16px #a21cafaa' }} className="rounded-xl overflow-hidden">
                     <img src="/images/chat.png" alt="Chat App" className="w-full h-full object-cover" />
                   </div>
@@ -120,8 +121,9 @@ export default function WorkSection() {
         {/* Projects List */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {filteredProjects.map((project) => (
-            <div
+            <Link
               key={project.id}
+              href={`/project/${project.title.toLowerCase()}`}
               className="group relative overflow-hidden rounded-xl bg-white/5 p-4 hover:bg-white/10 transition-all duration-300"
             >
               <div className="aspect-video relative mb-4 overflow-hidden rounded-lg">
@@ -138,7 +140,7 @@ export default function WorkSection() {
                   {project.category}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
