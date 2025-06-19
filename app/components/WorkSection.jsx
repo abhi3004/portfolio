@@ -1,52 +1,32 @@
 "use client";
 import React, { useState } from "react";
-import { FaNpm } from "react-icons/fa";
-import { SlPencil } from "react-icons/sl";
-import CardSwap, { Card } from "./CardSwap/CardSwap";
 import InfiniteScroll from "./InfiniteScroll/InfiniteScroll";
 import Link from "next/link";
 
 const items = [
-  { content: "Text Item 1" },
-  { content: <p>Paragraph Item 2</p> },
-  { content: "Text Item 3" },
-  { content: <img src="/images/whiteboard.png" alt="Heatmap" className="w-full h-full object-cover" /> },
-  { content: "Text Item 5" },
-  { content: <img src="/images/puppeteer.png" alt="Heatmap" className="w-full h-full object-cover" /> },
-  { content: "Text Item 7" },
-  { content: <p>Paragraph Item 8</p> },
-  { content: "Text Item 9" },
-  { content: <p>Paragraph Item 10</p> },
-  { content: "Text Item 11" },
-  { content: <p>Paragraph Item 12</p> },
-  { content: "Text Item 13" },
-  { content: <p>Paragraph Item 14</p> },
+  { content: <img src="/images/tensorflow.png" style={{boxShadow: '0 0 32px 8px rgb(231, 157, 29), 0 0 64px 16px rgba(242, 106, 27, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
+  { content: <img src="/images/puppeteer.png" style={{boxShadow: '0 0 32px 8px rgb(243, 253, 238), 0 0 64px 16px rgba(246, 31, 23, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
+  { content: <img src="/images/chat.png" style={{boxShadow: '0 0 32px 8px #2563eb, 0 0 64px 16px #2563ebaa'}} alt="Heatmap" className="w-full h-full object-cover" /> },
+  { content: <img src="/images/whiteboard.png" style={{boxShadow: '0 0 32px 8px rgb(53, 223, 238), 0 0 64px 16px rgba(183, 255, 255, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
 ];
 
 const projects = [
-  { 
+  {
     id: 1,
     title: "Heatmap",
     category: "Data Visualization",
     image: "/images/puppeteer.png",
     description: "Interactive heatmap visualization"
   },
-  { 
+  {
     id: 2,
     title: "Whiteboard",
     category: "Web Development",
     image: "/images/whiteboard.png",
     description: "Real-time collaborative whiteboard"
   },
-  { 
+  {
     id: 3,
-    title: "Chat App",
-    category: "Web Development",
-    image: "/images/chat.png",
-    description: "Real-time chat application"
-  },
-  { 
-    id: 4,
     title: "Chat App",
     category: "Web Development",
     image: "/images/chat.png",
@@ -57,13 +37,15 @@ const projects = [
 export default function WorkSection() {
   const [activeFilter, setActiveFilter] = useState("All");
   const onFilterClick = (filter) => {
+    if (filter === activeFilter) return;
     setActiveFilter(filter);
     const projectsContainer = document.getElementById("projects");
     projectsContainer.scrollIntoView({ behavior: "smooth" });
+    window.scrollBy(0, 10, { behavior: "smooth" });
   }
 
-  const filteredProjects = activeFilter === "All" 
-    ? projects 
+  const filteredProjects = activeFilter === "All"
+    ? projects
     : projects.filter(project => project.category === activeFilter);
 
   return (
@@ -84,41 +66,54 @@ export default function WorkSection() {
         ></div>
 
         <div className="w-full lg:w-[40%]">
-          <div className="h-[80vh] w-[550px] ml-10 overflow-hidden flex flex-col lg:flex-row relative bg-transparent border border-[#392e4e] rounded-[20px] justify-center items-center w-full mt-4 p-4">
-            <CardSwap
-                cardDistance={60}
-                verticalDistance={70}
-                delay={5000}
-                pauseOnHover={false}
-              >
-                <Card>
-                  <h3 className="flex items-center gap-2 p-2">
-                    <FaNpm />
-                    Heatmap
-                  </h3>
-                  <div style={{ boxShadow: '0 0 32px 8px #e11d48, 0 0 64px 16px #e11d48aa' }} className="rounded-xl overflow-hidden">
-                    <img src="/images/tensorflow.png" alt="Heatmap" className="w-full h-full object-cover" />
-                  </div>
-                </Card>
-                <Card>
+          <div className="w-full max-w-xl h-[80vh] max-h-[80vh] min-h-[350px] lg:h-[80vh] lg:w-[660px] rotate-x-10 ml-0 lg:ml-10 border-[2px] border-black bg-zinc-700 overflow-hidden flex flex-col lg:flex-row relative bg-transparent border border-[#392e4e] rounded-[20px] justify-center items-center mt-4 p-4">
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                transform: typeof window !== 'undefined' && window.innerWidth < 1024 ? 'scale(0.45) rotate(20deg)' : 'scale(1) rotate(20deg)',
+                transformOrigin: '65.7% 52.3%'
+              }}
+            >
+            {/* <CardSwap
+              cardDistance={100}
+              verticalDistance={70}
+              delay={5000}
+              pauseOnHover={false}
+            >
+              <Card>
                 <h3 className="flex items-center gap-2 p-2">
-                    <SlPencil />
-                    Whiteboard
-                  </h3><div style={{ boxShadow: '0 0 32px 8px #2563eb, 0 0 64px 16px #2563ebaa' }} className="rounded-xl overflow-hidden">
-                    <img src="/images/whiteboard.png" alt="Whiteboard" className="w-full h-full object-cover" />
-                  </div>
-                </Card>
-                <Card>
+                  <FaNpm />
+                  Heatmap
+                </h3>
+                <div style={{ boxShadow: '0 0 32px 8px #e11d48, 0 0 64px 16px #e11d48aa' }} className="rounded-xl overflow-hidden">
+                  <img src="/images/tensorflow.png" alt="Heatmap" className="w-full h-full object-cover" />
+                </div>
+              </Card>
+              <Card>
                 <h3 className="flex items-center gap-2 p-2">
-                    <FaNpm />
-                    Heatmap
-                  </h3><div style={{ boxShadow: '0 0 32px 8px #a21caf, 0 0 64px 16px #a21cafaa' }} className="rounded-xl overflow-hidden">
-                    <img src="/images/chat.png" alt="Chat App" className="w-full h-full object-cover" />
-                  </div>
-                </Card>
-              </CardSwap>
+                  <SlPencil />
+                  Whiteboard
+                </h3><div style={{ boxShadow: '0 0 32px 8px #2563eb, 0 0 64px 16px #2563ebaa' }} className="rounded-xl overflow-hidden">
+                  <img src="/images/whiteboard.png" alt="Whiteboard" className="w-full h-full object-cover" />
+                </div>
+              </Card>
+              <Card>
+                <h3 className="flex items-center gap-2 p-2">
+                  <FaNpm />
+                  Heatmap
+                </h3><div style={{ boxShadow: '0 0 32px 8px #a21caf, 0 0 64px 16px #a21cafaa' }} className="rounded-xl overflow-hidden">
+                  <img src="/images/chat.png" alt="Chat App" className="w-full h-full object-cover" />
+                </div>
+              </Card>
+            </CardSwap> */}
+            <InfiniteScroll autoplayDirection="up" autoplaySpeed={1.5} items={items} autoplay tiltDirection="right" />
+            <InfiniteScroll autoplayDirection="down" autoplaySpeed={2} items={items} autoplay tiltDirection="right" />
+            <InfiniteScroll autoplayDirection="up" autoplaySpeed={3.5} items={items} autoplay tiltDirection="right" />
+            </div>
           </div>
         </div>
+
       </div>
 
       {/* Filter Section */}
@@ -128,11 +123,10 @@ export default function WorkSection() {
             <button
               key={filter}
               onClick={() => onFilterClick(filter)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeFilter === filter
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter
                   ? "bg-white text-black"
                   : "bg-white/10 text-white/70 hover:bg-white/20"
-              }`}
+                }`}
             >
               {filter}
             </button>
