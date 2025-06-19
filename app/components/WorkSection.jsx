@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { FaNpm } from "react-icons/fa";
+import { SlPencil } from "react-icons/sl";
 import CardSwap, { Card } from "./CardSwap/CardSwap";
 import InfiniteScroll from "./InfiniteScroll/InfiniteScroll";
 import Link from "next/link";
@@ -42,11 +44,23 @@ const projects = [
     category: "Web Development",
     image: "/images/chat.png",
     description: "Real-time chat application"
+  },
+  { 
+    id: 4,
+    title: "Chat App",
+    category: "Web Development",
+    image: "/images/chat.png",
+    description: "Real-time chat application"
   }
 ];
 
 export default function WorkSection() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const onFilterClick = (filter) => {
+    setActiveFilter(filter);
+    const projectsContainer = document.getElementById("projects");
+    projectsContainer.scrollIntoView({ behavior: "smooth" });
+  }
 
   const filteredProjects = activeFilter === "All" 
     ? projects 
@@ -78,20 +92,27 @@ export default function WorkSection() {
                 pauseOnHover={false}
               >
                 <Card>
-                  <h3><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Heatmap</h3>
+                  <h3 className="flex items-center gap-2 p-2">
+                    <FaNpm />
+                    Heatmap
+                  </h3>
                   <div style={{ boxShadow: '0 0 32px 8px #e11d48, 0 0 64px 16px #e11d48aa' }} className="rounded-xl overflow-hidden">
                     <img src="/images/tensorflow.png" alt="Heatmap" className="w-full h-full object-cover" />
                   </div>
                 </Card>
                 <Card>
-                  <h3><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Whiteboard</h3>
-                  <div style={{ boxShadow: '0 0 32px 8px #2563eb, 0 0 64px 16px #2563ebaa' }} className="rounded-xl overflow-hidden">
+                <h3 className="flex items-center gap-2 p-2">
+                    <SlPencil />
+                    Whiteboard
+                  </h3><div style={{ boxShadow: '0 0 32px 8px #2563eb, 0 0 64px 16px #2563ebaa' }} className="rounded-xl overflow-hidden">
                     <img src="/images/whiteboard.png" alt="Whiteboard" className="w-full h-full object-cover" />
                   </div>
                 </Card>
                 <Card>
-                  <h3><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 640 512" focusable="false" className="chakra-icon css-cuv99z" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Card 3</h3>
-                  <div style={{ boxShadow: '0 0 32px 8px #a21caf, 0 0 64px 16px #a21cafaa' }} className="rounded-xl overflow-hidden">
+                <h3 className="flex items-center gap-2 p-2">
+                    <FaNpm />
+                    Heatmap
+                  </h3><div style={{ boxShadow: '0 0 32px 8px #a21caf, 0 0 64px 16px #a21cafaa' }} className="rounded-xl overflow-hidden">
                     <img src="/images/chat.png" alt="Chat App" className="w-full h-full object-cover" />
                   </div>
                 </Card>
@@ -101,12 +122,12 @@ export default function WorkSection() {
       </div>
 
       {/* Filter Section */}
-      <div className="mt-16 flex flex-col items-center">
+      <div id="projects" className="mt-16 flex flex-col items-center">
         <div className="flex gap-4 mb-8">
           {["All", "Data Visualization", "Web Development"].map((filter) => (
             <button
               key={filter}
-              onClick={() => setActiveFilter(filter)}
+              onClick={() => onFilterClick(filter)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeFilter === filter
                   ? "bg-white text-black"
