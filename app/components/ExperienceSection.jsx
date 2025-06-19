@@ -51,7 +51,7 @@ export default function ExperienceSection() {
             {/* Shiny border effect */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
             
-            <h3 className="text-xl font-bold mb-4 text-white/90">Companies I've Worked With</h3>
+            <h3 className="text-xl font-bold mb-4 text-white/90">Companies I&apos;ve Worked At</h3>
             <div className="flex flex-wrap gap-6 items-center">
               {experiences.filter(exp => exp.logo).map((experience) => (
                 <Link 
