@@ -124,7 +124,7 @@ export default function ExpertiseSection() {
       </div>
       
       {/* Technology Carousel */}
-      <div className="mt-16 mb-8">
+      {/* <div className="mt-16 mb-8">
         <h3 className="text-2xl font-bold text-center mb-8">Technologies I Work With</h3>
         <div className="relative">
           <div className="overflow-hidden">
@@ -139,21 +139,10 @@ export default function ExpertiseSection() {
                   <span className="text-sm mt-2 text-gray-300">{tech.title}</span>
                 </div>
               ))}
-              {/* Duplicate items for seamless loop */}
-              {/* {technologies.map((tech, index) => (
-                <div key={`dup-${index}`} className="flex flex-col items-center min-w-[80px]">
-                  <img
-                    src={tech.icon}
-                    alt={tech.name}
-                    className="w-12 h-12 object-contain"
-                  />
-                  <span className="text-sm mt-2 text-gray-300">{tech.name}</span>
-                </div>
-              ))} */}
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="justify-center flex mt-auto mb-8">
         <button
           onClick={() => scrollToWork()}
