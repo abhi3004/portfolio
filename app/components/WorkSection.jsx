@@ -7,7 +7,8 @@ const items = [
   { content: <img src="/images/tensorflow.png" style={{boxShadow: '0 0 32px 8px rgb(231, 157, 29), 0 0 64px 16px rgba(242, 106, 27, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
   { content: <img src="/images/puppeteer.png" style={{boxShadow: '0 0 32px 8px rgb(243, 253, 238), 0 0 64px 16px rgba(246, 31, 23, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
   { content: <img src="/images/chat.png" style={{boxShadow: '0 0 32px 8px #2563eb, 0 0 64px 16px #2563ebaa'}} alt="Heatmap" className="w-full h-full object-cover" /> },
-  { content: <img src="/images/whiteboard.png" style={{boxShadow: '0 0 32px 8px rgb(53, 223, 238), 0 0 64px 16px rgba(183, 255, 255, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
+  { content: <img src="/images/whiteboard.png" style={{boxShadow: '0 0 32px 8px rgb(53, 223, 238), 0 0 64px 16px rgba(167, 23, 66, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
+  { content: <img src="/images/heatmap.png" style={{boxShadow: '0 0 32px 8px rgb(255, 64, 207), 0 0 64px 16px rgba(246, 31, 23, 0.67)'}} alt="Heatmap" className="w-full h-full object-cover" /> },
 ];
 
 const projects = [

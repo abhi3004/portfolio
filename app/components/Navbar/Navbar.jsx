@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-  { name: '// home', path: '#home', number: '01', section: 'home' },
-  { name: '// expertise', path: '#expertise', number: '02', section: 'expertise' },
-  { name: '// work', path: '#work', number: '03', section: 'work' },
-  { name: '// experience', path: '#experience', number: '04', section: 'experience' },
-  { name: '// contact', path: '#contact', number: '05', section: 'contact' },
+  { name: '// home', path: '/', number: '01', section: 'home' },
+  { name: '// expertise', path: '/#expertise', number: '02', section: 'expertise' },
+  { name: '// work', path: '/#work', number: '03', section: 'work' },
+  { name: '// experience', path: '/#experience', number: '04', section: 'experience' },
+  { name: '// contact', path: '/#contact', number: '05', section: 'contact' },
 ];
 
 export default function Navbar() {
@@ -45,11 +45,17 @@ export default function Navbar() {
     };
   }, []);
 
-  // Smooth scroll for anchor links
+  // Handle navigation clicks
   const handleNavClick = (e, path) => {
-    if (path.startsWith('#')) {
+    if (path === '/') {
+      // For home page, let Next.js handle the navigation
+      setIsOpen(false);
+      return;
+    }
+    
+    if (path.includes('#')) {
       e.preventDefault();
-      const id = path.replace('#', '');
+      const id = path.split('#')[1];
       const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
