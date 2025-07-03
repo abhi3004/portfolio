@@ -112,7 +112,7 @@ export default function AnalyticsPage() {
                 .slice(0, 10)
                 .map(([term, count]) => (
                   <div key={term} className="flex justify-between items-center py-2 border-b border-white/10">
-                    <span className="text-sm italic">"{term}"</span>
+                    <span className="text-sm italic">&quot{term}&quot</span>
                     <span className="text-orange-400 font-semibold">{count} searches</span>
                   </div>
                 ))}
@@ -182,7 +182,7 @@ export default function AnalyticsPage() {
                     Source: {visit.referrer.source}
                     {visit.referrer.searchTerms && (
                       <span className="ml-2 text-orange-400">
-                        Search: "{visit.referrer.searchTerms}"
+                        Search: &quot{visit.referrer.searchTerms}&quot
                       </span>
                     )}
                   </div>
