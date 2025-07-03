@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "direct",
+    "path": "/",
+    "timestamp": "2025-07-03T07:47:59.520Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+    "referrer": {
+      "url": "",
+      "source": "direct",
+      "searchTerms": null,
+      "campaign": null
+    },
+    "screenResolution": "1920x1080",
+    "language": "en-GB",
+    "timezone": "Asia/Calcutta",
+    "urlParams": {},
+    "ip": "::1",
+    "country": "unknown",
+    "city": "unknown",
+    "serverTimestamp": "2025-07-03T07:48:00.076Z"
+  },
+  {
+    "uid": "direct",
+    "path": "/",
+    "timestamp": "2025-07-03T07:48:10.592Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+    "referrer": {
+      "url": "",
+      "source": "direct",
+      "searchTerms": null,
+      "campaign": null
+    },
+    "screenResolution": "1440x900",
+    "language": "en-GB",
+    "timezone": "Asia/Calcutta",
+    "urlParams": {},
+    "ip": "::1",
+    "country": "unknown",
+    "city": "unknown",
+    "serverTimestamp": "2025-07-03T07:48:10.828Z"
+  },
+  {
+    "uid": "direct",
+    "path": "/analytics",
+    "timestamp": "2025-07-03T07:48:19.402Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+    "referrer": {
+      "url": "",
+      "source": "direct",
+      "searchTerms": null,
+      "campaign": null
+    },
+    "screenResolution": "1440x900",
+    "language": "en-GB",
+    "timezone": "Asia/Calcutta",
+    "urlParams": {},
+    "ip": "::1",
+    "country": "unknown",
+    "city": "unknown",
+    "serverTimestamp": "2025-07-03T07:48:19.420Z"
+  }
+]

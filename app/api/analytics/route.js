@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import clientPromise from '../../lib/mongodb';
 
 export async function POST(request) {
   try {
@@ -15,29 +14,13 @@ export async function POST(request) {
       serverTimestamp: new Date().toISOString(),
     };
 
-    // Create analytics directory if it doesn't exist
-    const analyticsDir = path.join(process.cwd(), 'analytics');
-    if (!fs.existsSync(analyticsDir)) {
-      fs.mkdirSync(analyticsDir, { recursive: true });
-    }
+    // Connect to MongoDB
+    const client = await clientPromise;
+    const db = client.db('portfolio-analytics');
+    const collection = db.collection('visits');
 
-    // Store in a JSON file (you can replace this with a database)
-    const filePath = path.join(analyticsDir, 'visits.json');
-    
-    let visits = [];
-    if (fs.existsSync(filePath)) {
-      const fileContent = fs.readFileSync(filePath, 'utf8');
-      visits = JSON.parse(fileContent);
-    }
-
-    visits.push(enrichedData);
-    
-    // Keep only last 1000 visits to prevent file from growing too large
-    if (visits.length > 1000) {
-      visits = visits.slice(-1000);
-    }
-
-    fs.writeFileSync(filePath, JSON.stringify(visits, null, 2));
+    // Insert the visit data
+    await collection.insertOne(enrichedData);
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -48,21 +31,19 @@ export async function POST(request) {
 
 export async function GET() {
   try {
-    const analyticsDir = path.join(process.cwd(), 'analytics');
-    const filePath = path.join(analyticsDir, 'visits.json');
-    
-    if (!fs.existsSync(filePath)) {
-      return NextResponse.json({ visits: [] });
-    }
+    // Connect to MongoDB
+    const client = await clientPromise;
+    const db = client.db('portfolio-analytics');
+    const collection = db.collection('visits');
 
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const visits = JSON.parse(fileContent);
+    // Get all visits
+    const visits = await collection.find({}).sort({ serverTimestamp: -1 }).limit(1000).toArray();
 
     // Enhanced statistics
     const stats = {
       totalVisits: visits.length,
       uniquePaths: [...new Set(visits.map(v => v.path))].length,
-      recentVisits: visits.slice(-10), // Last 10 visits
+      recentVisits: visits.slice(0, 10), // Last 10 visits
       topPaths: visits.reduce((acc, visit) => {
         acc[visit.path] = (acc[visit.path] || 0) + 1;
         return acc;
