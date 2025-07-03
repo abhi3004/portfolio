@@ -7,8 +7,13 @@ export default function Analytics() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Only track in production
-    if (process.env.NODE_ENV === 'production') {
+    // Only track in production (not localhost)
+    const isProduction = typeof window !== 'undefined' && 
+      !window.location.hostname.includes('localhost') && 
+      !window.location.hostname.includes('127.0.0.1') &&
+      !window.location.hostname.includes('vercel.app');
+
+    if (isProduction) {
       const recordVisit = async () => {
         try {
           // Extract UID from URL parameters
