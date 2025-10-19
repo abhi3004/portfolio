@@ -24,15 +24,6 @@ const experiences = [
     technologies: ["Python", "MongoDB", "Express", "React", "Node.js"],
     logo: "/images/deqode-simple.svg",
     logoColor: "#FF6B35" // Blue color for Deqode
-  },
-  {
-    id: 3,
-    slug: "digital-agency",
-    role: "Frontend Developer",
-    company: "Digital Agency",
-    period: "2018 - 2020",
-    description: "Created responsive and interactive web interfaces. Collaborated with designers to implement pixel-perfect designs.",
-    technologies: ["JavaScript", "HTML5", "CSS3", "jQuery"]
   }
 ];
 

@@ -35,7 +35,7 @@ export default function HomeSection() {
 
     // Animation sequence
     const tl = gsap.timeline({
-      repeat: -1,
+      repeat: 0,
       repeatDelay: 1
     });
 
@@ -47,7 +47,7 @@ export default function HomeSection() {
     })
     .to(words[0].querySelector('div'), {
       width: 0,
-      duration: 0.5,
+      duration: 5,
       ease: 'none'
     }, '+=0.5')
     // Animate second word
@@ -58,7 +58,7 @@ export default function HomeSection() {
     })
     .to(words[1].querySelector('div'), {
       width: 0,
-      duration: 0.5,
+      duration: 5,
       ease: 'none'
     }, '+=0.5');
 
@@ -79,7 +79,7 @@ export default function HomeSection() {
         <Dither enableMouseInteraction={true} waveSpeed={0.05} waveFrequency={3} waveAmplitude={0.3} waveColor={[0.5, 0.5, 0.5]} colorNum={4} pixelSize={2} disableAnimation={false}/>
       </div>
       {/* Content above background */}
-      <div className="max-w-4xl mx-auto mt-10 relative z-10 border border-gray-400 rounded-lg p-11 backdrop-blur-md">
+      <div className="max-w-4xl mx-auto mt-10 relative z-10 border border-gray-400 rounded-lg pt-8 pb-6 px-11 backdrop-blur-md">
         <h1 className="text-[40px] md:text-[5vw] lg:text-[5vw] font-extrabold text-center mb-12 whitespace-nowrap">Abhijeet Pareek</h1>
         <p ref={textRef} className="text-[20px] text-lg mb-8 font-extrabold">
           <span className="animated-word inline-block">Fullstack Developer</span> with an expertise in UI and  <span className="animated-word inline-block">Machine Learning Enthusiast</span> . I build responsive UI and integrate smart ML experiences.

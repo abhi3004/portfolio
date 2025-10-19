@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import ScrollReveal from "./ScrollReveal/ScrollReveal";
 const expertise = [
   {
     title: "Software\nDevelopment",
@@ -12,7 +13,14 @@ const expertise = [
       <>
         <span className="text-xs text-gray-400">&lt;h3&gt;</span>
         <div className="border-l border-gray-600 pl-3 my-2 text-sm font-mono text-gray-200">
-          Experienced in both functional and OOP: Dart, Python, Java, JavaScript, TypeScript.
+          <ScrollReveal
+            baseOpacity={0}
+            enableBlur={true}
+            baseRotation={5}
+            blurStrength={10}
+          >
+            Experienced in both functional and OOP: Dart, Python, Java, JavaScript, TypeScript.
+          </ScrollReveal>
         </div>
         <span className="text-xs text-gray-400">&lt;/h3&gt;</span>
       </>
@@ -29,7 +37,14 @@ const expertise = [
       <>
         <span className="text-xs text-gray-400">&lt;h3&gt;</span>
         <div className="border-l border-gray-600 pl-3 my-2 text-sm font-mono text-gray-200">
-          Passionate about UI/UX. Over 5 years of development experience in HTML, CSS, JS, React and NextJS frameworks.
+          <ScrollReveal
+            baseOpacity={0}
+            enableBlur={true}
+            baseRotation={5}
+            blurStrength={10}
+          >
+            Passionate about UI/UX. Over 5 years of development experience in HTML, CSS, JS, React and NextJS frameworks.
+          </ScrollReveal>
         </div>
         <span className="text-xs text-gray-400">&lt;/h3&gt;</span>
       </>
@@ -46,7 +61,14 @@ const expertise = [
       <>
         <span className="text-xs text-gray-400">&lt;h3&gt;</span>
         <div className="border-l border-gray-600 pl-3 my-2 text-sm font-mono text-gray-200">
-          Skilled in developing hybrid mobile apps and cross-platform solutions using the Flutter framework.
+          <ScrollReveal
+            baseOpacity={0}
+            enableBlur={true}
+            baseRotation={5}
+            blurStrength={10}
+          >
+            Skilled in developing hybrid mobile apps and cross-platform solutions using the Flutter framework.
+          </ScrollReveal>
         </div>
         <span className="text-xs text-gray-400">&lt;/h3&gt;</span>
       </>
@@ -85,6 +107,7 @@ export default function ExpertiseSection() {
   return (
     <section id="expertise" className="p-20 max-w-6xl mx-auto px-2 md:min-h-screen md:flex md:flex-col md:justify-center">
       <h2 className="mt-auto text-5xl font-extrabold text-center mb-12">My Expertise</h2>
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
         {expertise.map((item, idx) => (
           <div
@@ -122,7 +145,6 @@ export default function ExpertiseSection() {
           </div>
         ))}
       </div>
-      
       {/* Technology Carousel */}
       {/* <div className="mt-16 mb-8">
         <h3 className="text-2xl font-bold text-center mb-8">Technologies I Work With</h3>
@@ -143,7 +165,7 @@ export default function ExpertiseSection() {
           </div>
         </div>
       </div> */}
-      <div className="justify-center flex mt-auto mb-8">
+      <div className="justify-center flex mt-12 mb-8">
         <button
           onClick={() => scrollToWork()}
           className={`p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group animate-hue-rotate ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
