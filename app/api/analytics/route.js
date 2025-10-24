@@ -29,42 +29,68 @@ export async function POST(request) {
   }
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const page = parseInt(searchParams.get('page')) || 1;
+    const limit = parseInt(searchParams.get('limit')) || 10;
+    const country = searchParams.get('country') || 'all';
+    
     // Connect to MongoDB
     const client = await clientPromise;
     const db = client.db('portfolio-analytics');
     const collection = db.collection('visits');
 
-    // Get all visits
-    const visits = await collection.find({}).sort({ serverTimestamp: -1 }).limit(1000).toArray();
+    // Build filter query
+    let filter = {};
+    if (country !== 'all') {
+      filter.country = country;
+    }
+
+    // Get total count for pagination
+    const totalVisits = await collection.countDocuments(filter);
+    
+    // Calculate pagination
+    const skip = (page - 1) * limit;
+    const totalPages = Math.ceil(totalVisits / limit);
+
+    // Get paginated visits
+    const visits = await collection
+      .find(filter)
+      .sort({ serverTimestamp: -1 })
+      .skip(skip)
+      .limit(limit)
+      .toArray();
+
+    // Get all visits for statistics (without pagination)
+    const allVisits = await collection.find({}).sort({ serverTimestamp: -1 }).limit(1000).toArray();
 
     // Enhanced statistics
     const stats = {
-      totalVisits: visits.length,
-      uniquePaths: [...new Set(visits.map(v => v.path))].length,
-      recentVisits: visits.slice(0, 10), // Last 10 visits
-      topPaths: visits.reduce((acc, visit) => {
+      totalVisits: allVisits.length,
+      uniquePaths: [...new Set(allVisits.map(v => v.path))].length,
+      recentVisits: visits, // Paginated visits
+      topPaths: allVisits.reduce((acc, visit) => {
         acc[visit.path] = (acc[visit.path] || 0) + 1;
         return acc;
       }, {}),
       
       // UID tracking
-      uniqueVisitors: [...new Set(visits.map(v => v.uid))].length,
-      topUIDs: visits.reduce((acc, visit) => {
+      uniqueVisitors: [...new Set(allVisits.map(v => v.uid))].length,
+      topUIDs: allVisits.reduce((acc, visit) => {
         acc[visit.uid] = (acc[visit.uid] || 0) + 1;
         return acc;
       }, {}),
       
       // Referrer analysis
-      referrerSources: visits.reduce((acc, visit) => {
+      referrerSources: allVisits.reduce((acc, visit) => {
         const source = visit.referrer?.source || 'unknown';
         acc[source] = (acc[source] || 0) + 1;
         return acc;
       }, {}),
       
       // Search terms analysis
-      searchTerms: visits
+      searchTerms: allVisits
         .filter(v => v.referrer?.searchTerms)
         .reduce((acc, visit) => {
           const term = visit.referrer.searchTerms.toLowerCase();
@@ -73,13 +99,23 @@ export async function GET() {
         }, {}),
       
       // Campaign tracking
-      campaigns: visits
+      campaigns: allVisits
         .filter(v => v.referrer?.campaign?.utm_campaign)
         .reduce((acc, visit) => {
           const campaign = visit.referrer.campaign.utm_campaign;
           acc[campaign] = (acc[campaign] || 0) + 1;
           return acc;
         }, {}),
+
+      // Pagination info
+      pagination: {
+        currentPage: page,
+        totalPages: totalPages,
+        totalVisits: totalVisits,
+        visitsPerPage: limit,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1
+      }
     };
 
     return NextResponse.json(stats);
