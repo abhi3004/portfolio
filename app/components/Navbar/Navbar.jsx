@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import ShinyText from '../ShinyText/ShinyText';
 
 const navItems = [
   { name: '// home', path: '/', number: '01', section: 'home' },
@@ -94,6 +95,22 @@ export default function Navbar() {
             </div>
           </div>
 
+          {/* Right-side actions (resume download) - desktop only */}
+          <div className="hidden md:flex items-center space-x-4">
+            <ShinyText className="text-sm"><a
+              href="https://drive.google.com/file/d/1EE23geSKQCOU4wsoB_-dcN99EdP6FsGI/view?usp=sharing"
+              download
+              aria-label="Download resume"
+              className="inline-flex items-center px-3 py-2 border border-white/40 text-white rounded-md text-sm font-medium bg-transparent hover:bg-white/5 transition-colors outline-none"
+            >
+              {/* download icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0l4-4M12 15l-4-4M21 21H3" />
+              </svg>
+              Download Resume
+            </a></ShinyText>
+          </div>
+
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
@@ -160,10 +177,24 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
+
+              {/* Resume download for mobile (visible inside menu) */}
+              <a
+                href="https://drive.google.com/file/d/1EE23geSKQCOU4wsoB_-dcN99EdP6FsGI/view?usp=sharing"
+                download
+                aria-label="Download resume"
+                className="mt-6 inline-flex items-center px-4 py-2 border border-white/40 text-white rounded-md text-base font-medium bg-transparent hover:bg-white/5 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0l4-4M12 15l-4-4M21 21H3" />
+                </svg>
+                <ShinyText className="text-base">Download Resume</ShinyText>
+              </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </nav>
   );
-} 
+}

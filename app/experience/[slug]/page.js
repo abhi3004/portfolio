@@ -115,62 +115,6 @@ Technical Achievements:
       "Delivered 15+ client projects on time and within budget"
     ],
     companyUrl: "https://deqode.com"
-  },
-  {
-    id: 3,
-    slug: "digital-agency",
-    role: "Frontend Developer",
-    company: "Digital Agency",
-    period: "2018 - 2020",
-    logo: "/images/terminal-svgrepo-com.svg",
-    logoColor: "#00D4FF",
-    bannerImage: "/images/terminal-svgrepo-com.svg",
-    description: "Created responsive and interactive web interfaces with pixel-perfect designs.",
-    longDescription: `As a Frontend Developer at Digital Agency, I focused on creating beautiful, responsive, and interactive web interfaces. I worked closely with designers to implement pixel-perfect designs and ensured optimal user experience across all devices.
-
-Key Responsibilities:
-• Developed responsive web interfaces using modern CSS and JavaScript
-• Collaborated with designers to implement pixel-perfect designs
-• Optimized websites for performance and SEO
-• Ensured cross-browser compatibility and accessibility
-• Maintained and updated existing client websites
-
-Major Projects:
-• Corporate Websites: Built responsive corporate websites for various clients
-• Landing Pages: Created high-converting landing pages with A/B testing
-• E-commerce Sites: Developed custom e-commerce solutions
-• Portfolio Websites: Designed and developed portfolio websites for creative professionals
-
-Technical Achievements:
-• Improved website loading speed by 60% through optimization
-• Implemented responsive design patterns for mobile-first approach
-• Created reusable CSS frameworks for consistent styling
-• Achieved 100% cross-browser compatibility across major browsers`,
-    technologies: ["JavaScript", "HTML5", "CSS3", "jQuery", "Bootstrap", "WordPress", "PHP"],
-    projects: [
-      {
-        name: "Corporate Website",
-        description: "Built responsive corporate websites for various industry clients",
-        technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"]
-      },
-      {
-        name: "E-commerce Site",
-        description: "Developed custom e-commerce solutions with payment integration",
-        technologies: ["WordPress", "PHP", "JavaScript", "CSS3"]
-      },
-      {
-        name: "Portfolio Website",
-        description: "Created portfolio websites for creative professionals",
-        technologies: ["HTML5", "CSS3", "JavaScript", "jQuery"]
-      }
-    ],
-    achievements: [
-      "Improved website loading speed by 60% through optimization",
-      "Implemented responsive design patterns for mobile-first approach",
-      "Created reusable CSS frameworks for consistent styling",
-      "Delivered 25+ client projects with 100% satisfaction rate"
-    ],
-    companyUrl: "#"
   }
 ];
 
